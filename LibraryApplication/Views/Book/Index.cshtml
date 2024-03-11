@@ -1,0 +1,68 @@
+﻿@model IEnumerable<LibraryApplication.Models.Book>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<form asp-controller="Book" asp-action="Index" method="post">
+    <label for="searchbook">Search</label>
+    <input type="text" name="searchbook" id="searchbook" />
+    <button src="GetBooksByAuthor">Search</button>
+</form>
+
+
+
+
+
+
+<br />
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Bookid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bookname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bookid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bookname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+@*                @Html.ActionLink("Edit", "Edit", new { id=item.Bookid }) |
+*@                @Html.ActionLink("Details", "Details", new {  id=item.Bookid }) |
+                @Html.ActionLink("Delete", "Delete", new {  id=item.Bookid }) |
+              @* @Html.ActionLink("SerchByAuthor", "SearchByAuthor" , new {author = item.Author})*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+

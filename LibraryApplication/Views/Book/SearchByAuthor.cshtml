@@ -1,0 +1,47 @@
+﻿@model IEnumerable<LibraryApplication.Models.Book>
+
+@{
+    ViewData["Title"] = "SearchByAuthor";
+}
+
+<h2>Books by Title</h2>
+
+<div>
+
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@if (Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Author</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var book in Model)
+            {
+                <tr>
+                    <td>@book.Bookid</td>
+                    <td>@book.Bookname</td>
+                    <td>@book.Author</td>
+                    <td> @book.Price</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No books found with the specified title.</p>
+}
+
+<br />
+<div>
+
+    <a asp-action="Index">Back to List</a>
+</div>
